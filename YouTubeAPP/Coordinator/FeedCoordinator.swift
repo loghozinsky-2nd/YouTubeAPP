@@ -18,9 +18,9 @@ class FeedCoordinator: BaseCoordinator {
   private var viewController = FeedViewController()
   
   override func start() {
-//    viewController.viewModelBuilder = {
-//      SearchViewModel(input: $0)
-//    }
+    viewController.viewModelBuilder = {
+      FeedViewModel()
+    }
 //    viewController.coordinator = self
     
     navigationController.viewControllers = [viewController]
