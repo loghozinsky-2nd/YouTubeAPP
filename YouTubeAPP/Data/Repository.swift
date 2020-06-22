@@ -6,12 +6,20 @@
 //  Copyright © 2020 Oleksii Oliinyk. All rights reserved.
 //
 
-import Foundation
+import RxCocoa
 
 class Repository {
   
-  private init() {}
-  
-  static let shared = Repository()
+    private init() {}
+    
+    static let shared = Repository()
+    
+    var playlistItems = BehaviorRelay<[PlaylistItem]>(value: [])
+    
+    func getPlaylistItems(playlistId: String = "PLBCF2DAC6FFB574DE", maxResults: String = "25") {
+        APIService.shared.getPlaylist(playlistId: playlistId, maxResults: maxResults) {
+            print(self)
+        }
+    }
   
 }
