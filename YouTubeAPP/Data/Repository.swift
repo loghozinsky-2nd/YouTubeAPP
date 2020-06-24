@@ -14,11 +14,17 @@ class Repository {
     
     static let shared = Repository()
     
-    var playlistItems = BehaviorRelay<[PlaylistItem]>(value: [])
+    var channelPlaylists = BehaviorRelay<[ChannelPlaylist]>(value: [])
+    var playlists = BehaviorRelay<[[PlaylistItem]]>(value: [[]])
     
-    func getPlaylistItems(playlistId: String = "PLBCF2DAC6FFB574DE", maxResults: String = "25") {
-        APIService.shared.getPlaylist(playlistId: playlistId, maxResults: maxResults) {
-            print(self)
+    func getChannelPlaylists(part: String = "snippet", channelId: String = "UCE_M8A5yxnLfW0KghEeajjw", maxResults: String? = "25") {
+        APIService.shared.getChannelPlaylists(part: part, channelId: channelId, maxResults: maxResults) { [weak self] (response) in
+            self?.channelPlaylists.accept(response.items)
+        }
+    }
+    func getPlaylistItems(part: String = "snippet", playlistId: String = "PLBCF2DAC6FFB574DE", maxResults: String? = "25") {
+        APIService.shared.getPlaylistItems(part: part, playlistId: playlistId, maxResults: maxResults) { [weak self] (response) in
+            print(self?.playlists)
         }
     }
   

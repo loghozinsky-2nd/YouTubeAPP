@@ -14,5 +14,6 @@ enum API: String {
     
 enum EndPoint: String {
     // GET method
-    case playlist = "playlistItems"
+    case playlists
+    case playlistItems
 }

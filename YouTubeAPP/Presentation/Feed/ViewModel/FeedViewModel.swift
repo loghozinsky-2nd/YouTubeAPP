@@ -12,11 +12,13 @@ import RxCocoa
 protocol FeedViewPresenteble {
     typealias Builder = () -> FeedViewPresenteble
     typealias Output = (
-        playlists: Observable<[PlaylistItem]>,
-        ()
+        channelPlaylists: Observable<[ChannelPlaylist]>,
+        playlistsItems: Observable<[[PlaylistItem]]>
     )
     
     var output: Output { get }
+    
+    func getSection(playlistId: String)
 }
 
 class FeedViewModel: FeedViewPresenteble {
@@ -27,15 +29,23 @@ class FeedViewModel: FeedViewPresenteble {
     
     init() {
         self.output = Output(
-            playlists: Repository.shared.playlistItems.asObservable().catchErrorJustReturn([]),
-            ()
+            channelPlaylists: Repository.shared.channelPlaylists.asObservable().catchErrorJustReturn([]),
+            playlistsItems: Repository.shared.playlists.asObservable().catchErrorJustReturn([[]])
         )
         
         process()
     }
     
     private func process() {
-        Repository.shared.getPlaylistItems()
+        output.channelPlaylists
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        Repository.shared.getChannelPlaylists()
+    }
+    
+    func getSection(playlistId: String) {
+        Repository.shared.getPlaylistItems(playlistId: playlistId)
     }
     
 }

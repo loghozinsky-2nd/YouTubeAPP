@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4525F8E824A3444E00AD3436 /* PlaylistItemsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8E724A3444E00AD3436 /* PlaylistItemsResponse.swift */; };
+		4525F8EA24A3451200AD3436 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8E924A3451200AD3436 /* PlaylistModel.swift */; };
+		4525F8EC24A35E3100AD3436 /* BottomSheetPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */; };
+		4525F8EE24A3703800AD3436 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8ED24A3703800AD3436 /* Model.swift */; };
 		45C5BB5A24A0AE24008AB046 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5924A0AE24008AB046 /* UIDevice.swift */; };
 		45C5BB5C24A0AE49008AB046 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5B24A0AE49008AB046 /* UIImageView.swift */; };
 		45C5BB5E24A0AE94008AB046 /* UILabel+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5D24A0AE94008AB046 /* UILabel+Label.swift */; };
@@ -21,13 +25,17 @@
 		4FADE4A324A09E6200AE7FD6 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4A224A09E6200AE7FD6 /* FeedCoordinator.swift */; };
 		4FADE4A924A09F2A00AE7FD6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4A824A09F2A00AE7FD6 /* FeedViewController.swift */; };
 		4FADE4AB24A09F4600AE7FD6 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4AA24A09F4600AE7FD6 /* FeedViewModel.swift */; };
-		4FADE4AD24A0A07E00AE7FD6 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4AC24A0A07E00AE7FD6 /* PlaylistModel.swift */; };
+		4FADE4AD24A0A07E00AE7FD6 /* PlaylistChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4AC24A0A07E00AE7FD6 /* PlaylistChannelModel.swift */; };
 		4FADE4AF24A0A0F700AE7FD6 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4AE24A0A0F700AE7FD6 /* Repository.swift */; };
 		4FADE4B324A0A31300AE7FD6 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FADE4B224A0A31300AE7FD6 /* UIColor.swift */; };
 		5F10AC9BB062DFF52A140F61 /* Pods_YouTubeAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD994F3541821DA6CE640886 /* Pods_YouTubeAPP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4525F8E724A3444E00AD3436 /* PlaylistItemsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemsResponse.swift; sourceTree = "<group>"; };
+		4525F8E924A3451200AD3436 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
+		4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPlayerViewController.swift; sourceTree = "<group>"; };
+		4525F8ED24A3703800AD3436 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		45C5BB5924A0AE24008AB046 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		45C5BB5B24A0AE49008AB046 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		45C5BB5D24A0AE94008AB046 /* UILabel+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Label.swift"; sourceTree = "<group>"; };
@@ -45,7 +53,7 @@
 		4FADE4A224A09E6200AE7FD6 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		4FADE4A824A09F2A00AE7FD6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		4FADE4AA24A09F4600AE7FD6 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		4FADE4AC24A0A07E00AE7FD6 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
+		4FADE4AC24A0A07E00AE7FD6 /* PlaylistChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistChannelModel.swift; sourceTree = "<group>"; };
 		4FADE4AE24A0A0F700AE7FD6 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		4FADE4B224A0A31300AE7FD6 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DD994F3541821DA6CE640886 /* Pods_YouTubeAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YouTubeAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +151,10 @@
 		4FADE49B24A09D9900AE7FD6 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				4FADE4AC24A0A07E00AE7FD6 /* PlaylistModel.swift */,
+				4525F8ED24A3703800AD3436 /* Model.swift */,
+				4525F8E924A3451200AD3436 /* PlaylistModel.swift */,
+				4FADE4AC24A0A07E00AE7FD6 /* PlaylistChannelModel.swift */,
+				4525F8E724A3444E00AD3436 /* PlaylistItemsResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				4FADE4A824A09F2A00AE7FD6 /* FeedViewController.swift */,
+				4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,7 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C5BB6024A0AEBE008AB046 /* UIView.swift in Sources */,
-				4FADE4AD24A0A07E00AE7FD6 /* PlaylistModel.swift in Sources */,
+				4FADE4AD24A0A07E00AE7FD6 /* PlaylistChannelModel.swift in Sources */,
 				4FADE4AB24A09F4600AE7FD6 /* FeedViewModel.swift in Sources */,
 				4FADE4A324A09E6200AE7FD6 /* FeedCoordinator.swift in Sources */,
 				4FADE4A124A09E1D00AE7FD6 /* AppCoordinator.swift in Sources */,
@@ -335,10 +347,14 @@
 				45C5BB5A24A0AE24008AB046 /* UIDevice.swift in Sources */,
 				45CFA39924A0D0A800723A76 /* APIService+Enpoint.swift in Sources */,
 				45C5BB5C24A0AE49008AB046 /* UIImageView.swift in Sources */,
+				4525F8E824A3444E00AD3436 /* PlaylistItemsResponse.swift in Sources */,
+				4525F8EA24A3451200AD3436 /* PlaylistModel.swift in Sources */,
 				45CFA39824A0D0A800723A76 /* APIService.swift in Sources */,
 				4FADE4A924A09F2A00AE7FD6 /* FeedViewController.swift in Sources */,
 				4FADE49F24A09DD800AE7FD6 /* Coordinator.swift in Sources */,
+				4525F8EC24A35E3100AD3436 /* BottomSheetPlayerViewController.swift in Sources */,
 				4FADE4AF24A0A0F700AE7FD6 /* Repository.swift in Sources */,
+				4525F8EE24A3703800AD3436 /* Model.swift in Sources */,
 				4FADE4B324A0A31300AE7FD6 /* UIColor.swift in Sources */,
 				45C5BB5E24A0AE94008AB046 /* UILabel+Label.swift in Sources */,
 			);

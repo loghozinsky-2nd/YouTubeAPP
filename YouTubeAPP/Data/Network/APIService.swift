@@ -59,9 +59,14 @@ class APIService: APIServiceDelegate, APIServiceFormatter {
     private init() {}
     
     // MARK: - YouTube
-    public func getPlaylist(playlistId: String, maxResults: String, completion: @escaping () -> Void) {
-        let dict = ["playlistId" : playlistId, "maxResults" : maxResults, "key" : token]
-        let url = getUrlString(dict, api: .main, endPoint: .playlist)
+    public func getChannelPlaylists(part: String, channelId: String, maxResults: String?, completion: @escaping (ChannelPlaylistResponse) -> Void) {
+        var dict: JsonDictionary = ["part" : part, "channelId" : channelId, "key" : token]
+        
+        if let maxResults = maxResults {
+            dict["maxResults"] = maxResults
+        }
+        
+        let url = getUrlString(dict, api: .main, endPoint: .playlists)
         
         callEndPoint(url, headers: self.headers) { [weak self] (response) in
             switch response {
@@ -70,9 +75,43 @@ class APIService: APIServiceDelegate, APIServiceFormatter {
                     do {
                         guard let strongSelf = self else { return }
                         print(result)
-//                        let data = try strongSelf.decoder.decode(GitHubSearchRepositoriesResponse.self, from: Data(json.utf8))
-//
-//                        completion(data)
+                        let data = try strongSelf.decoder.decode(ChannelPlaylistResponse.self, from: Data(json.utf8))
+
+                        print(">> PlaylistResponse as: \(data)")
+                        completion(data)
+                    } catch {
+                        print(error.localizedDescription)
+                }
+                case .failure(let error):
+                    print(">> response Error from failure")
+                    print(error)
+                default:
+                    print(">> response Error from default state")
+                    break
+            }
+        }
+    }
+
+    public func getPlaylistItems(part: String, playlistId: String, maxResults: String?, completion: @escaping (PlaylistItemsResponse) -> Void) {
+        var dict: JsonDictionary = ["part" : part, "playlistId" : playlistId, "key" : token]
+        
+        if let maxResults = maxResults {
+            dict["maxResults"] = maxResults
+        }
+        
+        let url = getUrlString(dict, api: .main, endPoint: .playlistItems)
+        
+        callEndPoint(url, headers: self.headers) { [weak self] (response) in
+            switch response {
+                case .success(let result):
+                    let json: String = result
+                    do {
+                        guard let strongSelf = self else { return }
+                        print(result)
+                        let data = try strongSelf.decoder.decode(PlaylistItemsResponse.self, from: Data(json.utf8))
+
+                        print(">> PlaylistResponse as: \(data)")
+                        completion(data)
                     } catch {
                         print(error.localizedDescription)
                 }
