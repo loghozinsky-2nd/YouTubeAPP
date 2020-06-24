@@ -124,6 +124,7 @@ class APIService: APIServiceDelegate, APIServiceFormatter {
             }
         }
     }
+    
 }
 
 extension APIServiceFormatter {

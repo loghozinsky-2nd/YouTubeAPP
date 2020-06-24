@@ -13,12 +13,12 @@ protocol FeedViewPresenteble {
     typealias Builder = () -> FeedViewPresenteble
     typealias Output = (
         channelPlaylists: Observable<[ChannelPlaylist]>,
-        playlistsItems: Observable<[[PlaylistItem]]>
+        playlistsItems: Observable<[String : [PlaylistItem]]>
     )
     
     var output: Output { get }
     
-    func getSection(playlistId: String)
+    func getPlaylistItems(playlistId: String)
 }
 
 class FeedViewModel: FeedViewPresenteble {
@@ -30,7 +30,7 @@ class FeedViewModel: FeedViewPresenteble {
     init() {
         self.output = Output(
             channelPlaylists: Repository.shared.channelPlaylists.asObservable().catchErrorJustReturn([]),
-            playlistsItems: Repository.shared.playlists.asObservable().catchErrorJustReturn([[]])
+            playlistsItems: Repository.shared.playlists.asObservable().catchErrorJustReturn([String : [PlaylistItem]]())
         )
         
         process()
@@ -44,7 +44,7 @@ class FeedViewModel: FeedViewPresenteble {
         Repository.shared.getChannelPlaylists()
     }
     
-    func getSection(playlistId: String) {
+    func getPlaylistItems(playlistId: String) {
         Repository.shared.getPlaylistItems(playlistId: playlistId)
     }
     

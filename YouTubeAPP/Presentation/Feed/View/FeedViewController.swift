@@ -51,16 +51,19 @@ class FeedViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-//        collectionView
-//            .rx
-//            .willDisplayCell
-//            .subscribe(onNext: { cell, indexPath in
-//                if indexPath.item == 0 {
-//                    let playlistId = self.viewModel.output.channelPlaylists.
-//                    self.viewModel.getSection(playlistId: )
-//                }
-//            })
-//            .disposed(by: disposeBag)
+        collectionView
+            .rx
+            .willDisplayCell
+            .subscribe(onNext: { (cell, indexPath) in
+                if indexPath.item == 0 {
+                    print("willDisplay")
+                    self.viewModel.output.channelPlaylists.bind { (items) in
+                        let item = items.first!
+                        self.viewModel.getPlaylistItems(playlistId: item.id)
+                    }.disposed(by: self.disposeBag)
+                }
+            })
+            .disposed(by: disposeBag)
     }
   
     private func setupLayout(in views: UIView ...) {
