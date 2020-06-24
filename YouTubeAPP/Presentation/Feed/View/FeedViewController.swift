@@ -18,6 +18,12 @@ class FeedViewController: UIViewController {
         return collectionView
     }()
     
+    let bottomSheetPlayerViewController: BottomSheetPlayerViewController = {
+        let viewController = BottomSheetPlayerViewController()
+        
+        return viewController
+    }()
+    
     private var viewModel: FeedViewPresenteble!
     var viewModelBuilder: FeedViewPresenteble.Builder!
     var coordinator: FeedCoordinator!
@@ -28,16 +34,37 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "asd")
+        
         bindViewModel()
         
-        setupLayout(in: collectionView)
+        setupLayout(in: collectionView, bottomSheetPlayerViewController.view)
     }
     
     private func bindViewModel() {
         viewModel = viewModelBuilder()
+        
+        viewModel.output.channelPlaylists
+            .bind(to: collectionView.rx.items(cellIdentifier: "asd", cellType: UICollectionViewCell.self)) { row, data, cell in
+                print("\(row)")
+                cell.backgroundColor = .init(white: 1, alpha: 0.15)
+            }
+            .disposed(by: disposeBag)
+        
+//        collectionView
+//            .rx
+//            .willDisplayCell
+//            .subscribe(onNext: { cell, indexPath in
+//                if indexPath.item == 0 {
+//                    let playlistId = self.viewModel.output.channelPlaylists.
+//                    self.viewModel.getSection(playlistId: )
+//                }
+//            })
+//            .disposed(by: disposeBag)
     }
   
     private func setupLayout(in views: UIView ...) {
+        view.addSubviews(views)
         view.backgroundColor = .black
         
         collectionView.fillSuperview()
