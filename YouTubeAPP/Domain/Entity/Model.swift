@@ -19,18 +19,12 @@ struct StateOffset {
     
     init(state: State) {
         switch state {
-        case .fullScreen:
-            self.offset = fullScreenOffset
-            self.state =  .fullScreen
         case .opened:
             self.offset = openedOffset
             self.state = .opened
-        case .closed:
+        default:
             self.offset = closedOffset
             self.state = .closed
-        default:
-            self.offset = hiddenOffset
-            self.state = .hidden
         }
     }
     

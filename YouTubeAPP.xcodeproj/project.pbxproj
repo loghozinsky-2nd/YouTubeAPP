@@ -11,6 +11,9 @@
 		4525F8EA24A3451200AD3436 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8E924A3451200AD3436 /* PlaylistModel.swift */; };
 		4525F8EC24A35E3100AD3436 /* BottomSheetPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */; };
 		4525F8EE24A3703800AD3436 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8ED24A3703800AD3436 /* Model.swift */; };
+		4525F8F024A47D8700AD3436 /* PlaylistItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8EF24A47D8700AD3436 /* PlaylistItemCollectionViewCell.swift */; };
+		4525F8F224A49C7C00AD3436 /* PlaylistItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8F124A49C7C00AD3436 /* PlaylistItemViewModel.swift */; };
+		4525F8F424A4C82100AD3436 /* PlaylistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4525F8F324A4C82100AD3436 /* PlaylistHeaderView.swift */; };
 		45C5BB5A24A0AE24008AB046 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5924A0AE24008AB046 /* UIDevice.swift */; };
 		45C5BB5C24A0AE49008AB046 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5B24A0AE49008AB046 /* UIImageView.swift */; };
 		45C5BB5E24A0AE94008AB046 /* UILabel+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C5BB5D24A0AE94008AB046 /* UILabel+Label.swift */; };
@@ -36,6 +39,9 @@
 		4525F8E924A3451200AD3436 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPlayerViewController.swift; sourceTree = "<group>"; };
 		4525F8ED24A3703800AD3436 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4525F8EF24A47D8700AD3436 /* PlaylistItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		4525F8F124A49C7C00AD3436 /* PlaylistItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemViewModel.swift; sourceTree = "<group>"; };
+		4525F8F324A4C82100AD3436 /* PlaylistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderView.swift; sourceTree = "<group>"; };
 		45C5BB5924A0AE24008AB046 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		45C5BB5B24A0AE49008AB046 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		45C5BB5D24A0AE94008AB046 /* UILabel+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Label.swift"; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				4FADE4AA24A09F4600AE7FD6 /* FeedViewModel.swift */,
+				4525F8F124A49C7C00AD3436 /* PlaylistItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -200,6 +207,8 @@
 			children = (
 				4FADE4A824A09F2A00AE7FD6 /* FeedViewController.swift */,
 				4525F8EB24A35E3100AD3436 /* BottomSheetPlayerViewController.swift */,
+				4525F8EF24A47D8700AD3436 /* PlaylistItemCollectionViewCell.swift */,
+				4525F8F324A4C82100AD3436 /* PlaylistHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,7 +349,9 @@
 			files = (
 				45C5BB6024A0AEBE008AB046 /* UIView.swift in Sources */,
 				4FADE4AD24A0A07E00AE7FD6 /* PlaylistChannelModel.swift in Sources */,
+				4525F8F424A4C82100AD3436 /* PlaylistHeaderView.swift in Sources */,
 				4FADE4AB24A09F4600AE7FD6 /* FeedViewModel.swift in Sources */,
+				4525F8F024A47D8700AD3436 /* PlaylistItemCollectionViewCell.swift in Sources */,
 				4FADE4A324A09E6200AE7FD6 /* FeedCoordinator.swift in Sources */,
 				4FADE4A124A09E1D00AE7FD6 /* AppCoordinator.swift in Sources */,
 				4FADE48524A09CB900AE7FD6 /* AppDelegate.swift in Sources */,
@@ -352,6 +363,7 @@
 				45CFA39824A0D0A800723A76 /* APIService.swift in Sources */,
 				4FADE4A924A09F2A00AE7FD6 /* FeedViewController.swift in Sources */,
 				4FADE49F24A09DD800AE7FD6 /* Coordinator.swift in Sources */,
+				4525F8F224A49C7C00AD3436 /* PlaylistItemViewModel.swift in Sources */,
 				4525F8EC24A35E3100AD3436 /* BottomSheetPlayerViewController.swift in Sources */,
 				4FADE4AF24A0A0F700AE7FD6 /* Repository.swift in Sources */,
 				4525F8EE24A3703800AD3436 /* Model.swift in Sources */,

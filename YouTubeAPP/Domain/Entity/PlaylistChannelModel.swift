@@ -17,7 +17,7 @@ struct ChannelPlaylist: Decodable {
     let kind: String
     let etag: String
     let id: String
-    let snippet: ChannelPlaylistSnippetItem?
+    let snippet: ChannelPlaylistSnippetItem
 }
 
 struct ChannelPlaylistSnippetItem: Decodable {

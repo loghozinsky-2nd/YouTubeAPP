@@ -59,8 +59,10 @@ class BottomSheetPlayerViewController: UIViewController {
     
     private func bindView() {
         isOpened
-            .bind { (value) in }
-        .disposed(by: disposeBag)
+            .bind { [weak self] (value) in
+                
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setupBottomSheet() {
@@ -72,11 +74,30 @@ class BottomSheetPlayerViewController: UIViewController {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan))
         view.addGestureRecognizer(panGestureRecognizer)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHandleCardTap))
         view.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    private func setupLayout(in views: UIView ..., with sublayer: CALayer) {
+        view.addSubviews(views)
+        
+        view.backgroundColor = .accentColor
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
+        
+        closeButton.anchor(top: view.topAnchor, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
+        closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-    func slide(_ offset: CGFloat = 0, duration: TimeInterval = 0) {
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+        
+    }
+    
+}
+
+extension BottomSheetPlayerViewController {
+    // MARK: BottomSheet Logic
+    private func slide(_ offset: CGFloat = 0, duration: TimeInterval = 0) {
         let offset = screen.height - offset
         
         let toggleBackground = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
@@ -88,14 +109,27 @@ class BottomSheetPlayerViewController: UIViewController {
     }
     
     private func getNextState(_ state: State) -> State {
-        switch state {
-        case .closed:
-            return .opened
+        return state == .closed ? .opened : .closed
+    }
+    
+    
+    private func stateOffset(_ offset: CGFloat = 100) -> CGFloat {
+        let contentHeight: CGFloat = 300
+        switch offset {
+        case screen.height / 3 ..< contentHeight + 50:
+            let offsetY = screen.height - contentHeight
+            self.stateOffset.offset = offsetY
+            self.stateOffset.state = .opened
+            return offsetY
         default:
-            return .closed
+            let offsetY = screen.height - 74
+            self.stateOffset.offset = offsetY
+            self.stateOffset.state = .closed
+            return offsetY
         }
     }
     
+    // MARK: Handlers
     @objc private func handleCardPan(_ sender: UIPanGestureRecognizer) {
         let superView = self.view.superview!
         let pointInSuperview = sender.location(in: superView)
@@ -132,10 +166,11 @@ class BottomSheetPlayerViewController: UIViewController {
     }
     
     @objc private func onChangeStateButtonTap(_ sender: UIButton!) {
-        stateOffset = .init(state: .opened)
+        let nextState = getNextState(stateOffset.state)
+        stateOffset = .init(state: nextState)
     }
     
-    @objc func handleCardTap(recognzier: UITapGestureRecognizer) {
+    @objc private func onHandleCardTap(recognzier: UITapGestureRecognizer) {
         switch recognzier.state {
         case .ended:
             let nextState = getNextState(stateOffset.state)
@@ -144,57 +179,18 @@ class BottomSheetPlayerViewController: UIViewController {
             break
         }
     }
-    
-    private func stateOffset(_ offset: CGFloat = 100) -> CGFloat {
-        let contentHeight: CGFloat = view.frame.height
-        switch offset {
-        case screen.height / 2 ..< contentHeight + 50:
-            let offsetY = screen.height - contentHeight
-            self.stateOffset.offset = offsetY
-            self.stateOffset.state = .opened
-            return offsetY
-        default:
-            let offsetY = screen.height - 100
-            self.stateOffset.offset = offsetY
-            self.stateOffset.state = .closed
-            return offsetY
-        }
-    }
-    
-    private func setupLayout(in views: UIView ..., with sublayers: CALayer) {
-        view.addSubviews(views)
-        
-        view.backgroundColor = .accentColor
-        view.layer.cornerRadius = 16
-        view.clipsToBounds = true
-        
-        closeButton.anchor(top: view.topAnchor, padding: UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
-        closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-
-        view.layer.insertSublayer(gradientLayer, at: 0)
-        gradientLayer.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
-        
-    }
-    
 }
 
 extension ObservableType {
-
-    /**
-     Filters the source observable sequence using a trigger observable sequence producing Bool values.
-     Elements only go through the filter when the trigger has not completed and its last element was true. If either source or trigger error's, then the source errors.
-     - parameter trigger: Triggering event sequence.
-     - returns: Filtered observable sequence.
-     */
-    func filter(if trigger: Observable<Bool>) -> Observable<E> {
-        return withLatestFrom(trigger) { (myValue, triggerValue) -> (Element, Bool) in
-                return (myValue, triggerValue)
+    func filter(if trigger: Observable<Bool>) -> Observable<Element> {
+        withLatestFrom(trigger) { (myValue, triggerValue) -> (Element, Bool) in
+                (myValue, triggerValue)
             }
             .filter { (myValue, triggerValue) -> Bool in
-                return triggerValue == true
+                triggerValue == true
             }
             .map { (myValue, triggerValue) -> Element in
-                return myValue
+                myValue
             }
     }
 }
